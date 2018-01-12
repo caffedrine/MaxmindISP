@@ -27,10 +27,10 @@ Because of it's size, importing database may be tricky from phpmyadmin as you ma
 	mysql> CREATE TABLE blocks ( ipNumStart int(11), ipNumEnd int(11), isp varchar(128) );
 	```
 
-3. Use mysqldump to import database faster:
+3. To import database faster:
 
 	```sql
-	mysql> LOAD DATA LOCAL INFILE '~/Desktop/GeoIPASNum2.csv' INTO TABLE Test.blocks FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+	mysql> LOAD DATA LOCAL INFILE '~/GeoIPASNum2.csv' INTO TABLE Maxmind_GeoLite_ASN.blocks FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
 	```
 
 
