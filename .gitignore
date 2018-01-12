@@ -3,3 +3,6 @@
 *.idea
 /*.idea
 ips_test.txt
+*.*~
+*~
+*_
