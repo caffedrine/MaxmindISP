@@ -33,6 +33,21 @@ Because of it's size, importing database may be tricky from phpmyadmin as you ma
 	mysql> LOAD DATA LOCAL INFILE '~/GeoIPASNum2.csv' INTO TABLE Maxmind_GeoLite_ASN.blocks FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
 	```
 
+You can use your own database as long as it have the following structure:
+
+```sql
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| ipNumStart | int(11)      | NO   |     | NULL    |       |
+| ipNumEnd   | int(11)      | NO   |     | NULL    |       |
+| isp        | varchar(128) | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+```
+
+where:
+  * **ipNumStart - ipNumEnd** - starting and ending ip address in long integer format. You can use PHP function ip2long() to convert string dotted format into long integer format.
+  * **isp** - isp description
 
 ## Database structure:
 
@@ -68,6 +83,16 @@ mysql> DESCRIBE blocks;
 ```
 
 ## Usage
+
+First of all, change the following lines according to your mysql server:
+
+```php
+# Database connection credentials
+$db_name = "Maxmind_GeoLite_ASN";
+$db_user = "root";
+$db_pass = "";
+$db_host = "localhost";
+```
 
 Make sure you have Apache2, PHP and MySQL services installed and started!
 
